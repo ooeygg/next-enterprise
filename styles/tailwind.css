@@ -1,19 +1,1084 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+/* The other 5 built-in themes (Aurora, Cosmic Tide, Midas, Inferno, Eclipse) as
+   [data-theme="x"] / [data-theme="x"].light blocks. Generated from
+   lib/theme/tokens.ts by scripts/build-theme-css.ts — never edit by hand.
+   Must stay a top-of-file @import (CSS requires all @import rules to precede
+   every other statement, or postcss-import silently drops them). */
+@import "./theme-tokens.generated.css";
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* Theme Engine: registering every color token as a native <color> custom
+   property lets the browser interpolate it directly when [data-theme]/.light
+   changes, so switching themes cross-fades for free wherever a
+   transition: background-color/color/border-color/box-shadow already
+   applies — no JS-driven animation needed. Initial values match verdant
+   dark (the default theme) defined below. */
+@property --color-canvas {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #031c14;
+}
+@property --color-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #06251d;
+}
+@property --color-mist {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0a2f24;
+}
+@property --color-ink-50 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #082a20;
+}
+@property --color-ink-100 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #10362a;
+}
+@property --color-ink-200 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1d4537;
+}
+@property --color-ink-300 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3d6153;
+}
+@property --color-ink-400 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7d9a8c;
+}
+@property --color-ink-500 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #89a89c;
+}
+@property --color-ink-600 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #aabeaf;
+}
+@property --color-ink-700 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c8d5cb;
+}
+@property --color-ink-800 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e0e6df;
+}
+@property --color-ink-900 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0efe8;
+}
+@property --color-ink-950 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f6f4ef;
+}
+@property --color-forest-500 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2d5a48;
+}
+@property --color-forest-600 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1d4636;
+}
+@property --color-forest-700 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #123528;
+}
+@property --color-forest-800 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0a2b20;
+}
+@property --color-forest-900 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #041e16;
+}
+@property --color-sky-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0b3327;
+}
+@property --color-blue-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #89a89c;
+}
+@property --color-sage-300 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c2d2c5;
+}
+@property --color-sage-400 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #aabeaf;
+}
+@property --color-sage-500 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #89a89c;
+}
+@property --color-sage-600 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #9db5a7;
+}
+@property --color-sage-700 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6d9b83;
+}
+@property --color-gold-100 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7e9c5;
+}
+@property --color-gold-200 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #eed7a5;
+}
+@property --color-gold-300 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #d8bd93;
+}
+@property --color-gold-350 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #d4b06a;
+}
+@property --color-gold-400 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c8a46a;
+}
+@property --color-gold-500 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #b99b6b;
+}
+@property --color-gold-600 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #9a7f53;
+}
+@property --color-gold-700 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #735d37;
+}
+@property --color-amber-flag {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #d4a955;
+}
+@property --color-rose-flag {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #cf8a84;
+}
+@property --color-glass-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(6 37 29 / 0.72);
+}
+@property --color-glass-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(246 244 239 / 0.08);
+}
+@property --surface-highlight {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(246 244 239 / 0.06);
+}
+@property --color-paper {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7f4ec;
+}
+@property --color-paper-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0a2b20;
+}
+@property --color-paper-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3d6153;
+}
+@property --color-paper-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2d5a48;
+}
+@property --color-paper-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #9a7f53;
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+@theme {
+  /* Brand palette deep forest green, warm ivory, desaturated sage, soft gold.
+     These are DARK MODE values (the default). `.light` below overrides them. */
+  --color-canvas: #031c14;
+  --color-surface: #06251d;
+  --color-mist: #0a2f24;
+
+  /* Ink ramp: sage-tinted ivory on forest. 50 = closest to canvas, 950 = strongest text. */
+  --color-ink-50: #082a20;
+  --color-ink-100: #10362a;
+  --color-ink-200: #1d4537;
+  --color-ink-300: #3d6153;
+  /* ink-400 is the dimmest tone allowed for meaningful text: >=4.5:1 on canvas/surface/mist */
+  --color-ink-400: #7d9a8c;
+  --color-ink-500: #89a89c;
+  --color-ink-600: #aabeaf;
+  --color-ink-700: #c8d5cb;
+  --color-ink-800: #e0e6df;
+  --color-ink-900: #f0efe8;
+  --color-ink-950: #f6f4ef;
+
+  /* Forest ramp structural greens (deep surfaces, filled elements). */
+  --color-forest-500: #2d5a48;
+  --color-forest-600: #1d4636;
+  --color-forest-700: #123528;
+  --color-forest-800: #0a2b20;
+  --color-forest-900: #041e16;
+
+  --color-sky-soft: #0b3327;
+  --color-blue-soft: #89a89c;
+
+  /* Sage ramp the calm signal color (positive trends, optimal states). */
+  --color-sage-300: #c2d2c5;
+  --color-sage-400: #aabeaf;
+  --color-sage-500: #89a89c;
+  --color-sage-600: #9db5a7;
+  --color-sage-700: #6d9b83;
+
+  /* Gold the luxury accent. Use sparingly. */
+  --color-gold-100: #f7e9c5;
+  --color-gold-200: #eed7a5;
+  --color-gold-300: #d8bd93;
+  --color-gold-350: #d4b06a;
+  --color-gold-400: #c8a46a;
+  --color-gold-500: #b99b6b;
+  --color-gold-600: #9a7f53;
+  --color-gold-700: #735d37;
+
+  --color-amber-flag: #d4a955;
+  --color-rose-flag: #cf8a84;
+
+  --color-glass-bg: rgb(6 37 29 / 0.72);
+  --color-glass-border: rgb(246 244 239 / 0.08);
+
+  /* Typography */
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid editorial type scale */
+  --text-display-xl: clamp(2.75rem, 1.4rem + 5.2vw, 5.5rem);
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-lg: clamp(2.1rem, 1.2rem + 3.2vw, 3.75rem);
+  --text-display-lg--line-height: 1.06;
+  --text-display-lg--letter-spacing: -0.025em;
+
+  /* Depth layered ambient + key + long warm shadow, lit from the upper left. */
+  --shadow-soft: 0 1px 1px rgb(1 12 8 / 0.2), 0 3px 8px rgb(1 12 8 / 0.22), 2px 12px 32px -4px rgb(1 12 8 / 0.3);
+  --shadow-lift: 0 1px 2px rgb(1 12 8 / 0.22), 0 6px 16px rgb(1 12 8 / 0.28), 4px 22px 48px -6px rgb(1 12 8 / 0.42);
+  --shadow-float: 0 2px 6px rgb(1 12 8 / 0.25), 0 14px 32px rgb(1 12 8 / 0.32), 6px 40px 88px -8px rgb(1 12 8 / 0.48);
+
+  /* Inner top-edge highlight the light catching a surface's upper rim. */
+  --surface-highlight: rgb(246 244 239 / 0.06);
+
+  /* "Printed report / receipt" card treatment (booking confirmations, results
+     summaries): stays light-paper regardless of dark/light mode, tinted per
+     theme — see lib/theme/tokens.ts `paper`. */
+  --color-paper: #f7f4ec;
+  --color-paper-text: #0a2b20;
+  --color-paper-muted: #3d6153;
+  --color-paper-border: #2d5a48;
+  --color-paper-accent: #9a7f53;
+
+  --radius-card: 1.5rem;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  /* CSS-driven entrance for above-the-fold content: runs at first paint instead
+     of waiting for JS hydration, so the LCP element is never hydration-blocked.
+     `rise` is transform-only for LCP-candidate text (opacity animation from 0
+     disqualifies it as an LCP candidate); `rise-fade` adds the fade for
+     everything else above the fold. */
+  --animate-rise: rise 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
+  --animate-rise-fade: rise-fade 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
+  --animate-pop: pop-in 0.55s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
+
+  @keyframes rise {
+    from {
+      transform: translateY(16px);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes rise-fade {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* A spring-like arrival for success moments: overshoots slightly, then settles. */
+  @keyframes pop-in {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* A reflection sweeps across polished metal, then rests. Runs every ~10s. */
+@keyframes sheen {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  14% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+/* Light mode overrides warm ivory field, forest ink, white cards. */
+.light {
+  --color-canvas: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-mist: #eeece6;
+
+  --color-ink-50: #f1efe9;
+  --color-ink-100: #e8e5df;
+  --color-ink-200: #d8d5cf;
+  --color-ink-300: #b5b3ab;
+  --color-ink-400: #636864;
+  --color-ink-500: #5d615e;
+  --color-ink-600: #474c48;
+  --color-ink-700: #333835;
+  --color-ink-800: #232323;
+  --color-ink-900: #14201a;
+  --color-ink-950: #06251d;
+
+  --color-forest-500: #35604d;
+  --color-forest-600: #26503e;
+  --color-forest-700: #16402f;
+  --color-forest-800: #0a2f23;
+  --color-forest-900: #06251d;
+
+  --color-sky-soft: #e3e8e1;
+  --color-blue-soft: #89a89c;
+
+  --color-sage-300: #c2d2c5;
+  --color-sage-400: #aabeaf;
+  --color-sage-500: #89a89c;
+  --color-sage-600: #4f7a64;
+  --color-sage-700: #47705c;
+
+  --color-gold-300: #d8bd93;
+  --color-gold-400: #c8a46a;
+  --color-gold-500: #8a6e3f;
+  --color-gold-600: #755c33;
+
+  --color-amber-flag: #8f7028;
+  --color-rose-flag: #9d5147;
+
+  --color-glass-bg: rgb(247 246 242 / 0.78);
+  --color-glass-border: rgb(255 255 255 / 0.6);
+
+  --shadow-soft: 0 1px 1px rgb(6 37 29 / 0.03), 0 3px 8px rgb(6 37 29 / 0.04), 2px 12px 32px -4px rgb(6 37 29 / 0.07);
+  --shadow-lift: 0 1px 2px rgb(6 37 29 / 0.04), 0 6px 16px rgb(6 37 29 / 0.06), 4px 22px 48px -6px rgb(6 37 29 / 0.1);
+  --shadow-float:
+    0 2px 6px rgb(6 37 29 / 0.05), 0 14px 32px rgb(6 37 29 / 0.08), 6px 40px 88px -8px rgb(6 37 29 / 0.14);
+
+  --surface-highlight: rgb(255 255 255 / 0.85);
+
+  --color-paper: #f7f4ec;
+  --color-paper-text: #0a2b20;
+  --color-paper-muted: #3d6153;
+  --color-paper-border: #2d5a48;
+  --color-paper-accent: #9a7f53;
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-ink-100, currentColor);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* In-page anchor targets must clear the fixed marketing header. */
+    scroll-padding-top: 5.5rem;
+    color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    /* Cinematic ambience: light enters from the upper left a warm gold breath,
+       a sage counter-light on the right, and a barely-there vignette below.
+       These should be felt, not seen. */
+    background-image:
+      radial-gradient(110rem 60rem at 8% -8%, rgb(185 155 107 / 0.06), transparent 58%),
+      radial-gradient(80rem 48rem at 92% -4%, rgb(137 168 156 / 0.045), transparent 62%),
+      radial-gradient(140rem 90rem at 50% 118%, rgb(1 12 8 / 0.35), transparent 60%);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Theme-switch cross-fade: color/background/border tokens interpolate
+     smoothly (~450ms) whenever [data-theme] or .light changes, thanks to the
+     @property registrations above. Off under reduced motion — OS-level or
+     the in-app "Reduced Motion" setting (html[data-reduced-motion="true"]). */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-reduced-motion="true"]) body,
+    html:not([data-reduced-motion="true"]) .card-luxe,
+    html:not([data-reduced-motion="true"]) .glass {
+      transition:
+        background-color 0.45s ease,
+        color 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+    }
+  }
+
+  .light body {
+    background-image:
+      radial-gradient(110rem 60rem at 8% -8%, rgb(200 164 106 / 0.07), transparent 58%),
+      radial-gradient(80rem 48rem at 92% -4%, rgb(137 168 156 / 0.06), transparent 62%),
+      radial-gradient(140rem 90rem at 50% 118%, rgb(6 37 29 / 0.04), transparent 60%);
+  }
+
+  ::selection {
+    background-color: var(--color-sage-500);
+    color: var(--color-forest-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 2px;
+  }
+}
+
+@utility glass {
+  background-color: var(--color-glass-bg);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid var(--color-glass-border);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* ── Appearance settings: Reduced Motion / High Contrast / Glass Effects ── */
+
+/* In-app "Reduced Motion" toggle: independent of the OS setting, disables
+   every transition/animation registered above once set on <html>. */
+html[data-reduced-motion="true"] {
+  transition-duration: 0s !important;
+}
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* "Glass Effects" off: flatten translucent/blurred surfaces to solid ones. */
+html[data-glass="off"] .glass,
+html[data-glass="off"] .card-luxe {
+  backdrop-filter: none;
+  background-color: var(--color-surface);
+  background-image: none;
+}
+
+/* "High Contrast" on: tighten borders/dim-text thresholds regardless of the
+   active color theme. */
+html[data-high-contrast="true"] {
+  --color-ink-400: var(--color-ink-600);
+  --color-glass-border: var(--color-ink-500);
+}
+html[data-high-contrast="true"] .border,
+html[data-high-contrast="true"] .card-luxe {
+  border-color: var(--color-ink-400) !important;
+}
+
+/* Dissolves a rectangular canvas into the page: a soft radial fade on all
+   edges so the DNA scene reads as part of the environment rather than a
+   boxed image. Works regardless of the canvas's own alpha channel since
+   masking is compositing, not canvas content. */
+@utility mask-fade-hero {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, black 42%), radial-gradient(130% 115% at 66% 45%, black 38%, transparent 88%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, black 42%), radial-gradient(130% 115% at 66% 45%, black 38%, transparent 88%);
+  mask-composite: intersect;
+}
+
+/* ── Materials ─────────────────────────────────────────────────────────── */
+
+/* Layered card surface: a whisper of light along the top rim, separated from
+   the page by shadow rather than border. */
+@utility card-luxe {
+  background-image: linear-gradient(180deg, var(--surface-highlight-wash, rgb(246 244 239 / 0.025)), transparent 42%);
+  box-shadow:
+    inset 0 1px 0 var(--surface-highlight),
+    var(--shadow-soft);
+}
+.light .card-luxe {
+  --surface-highlight-wash: rgb(255 255 255 / 0.5);
+}
+
+/* Machined champagne gold: the primary CTA. Brushed metal built from layered
+   gradients, a hairline deep edge, an inner highlight, and a warm under-glow. */
+@utility btn-luxe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-forest-900);
+  background-image:
+    linear-gradient(180deg, rgb(247 233 197 / 0.55), rgb(247 233 197 / 0) 38%),
+    linear-gradient(165deg, #eed7a5 0%, #d4b06a 42%, #b99b6b 74%, #9a7f53 100%);
+  border: 1px solid rgb(115 93 55 / 0.55);
+  box-shadow:
+    inset 0 1px 0 rgb(247 233 197 / 0.85),
+    inset 0 -1px 0 rgb(115 93 55 / 0.45),
+    0 1px 2px rgb(1 12 8 / 0.25),
+    0 6px 16px rgb(1 12 8 / 0.22),
+    0 10px 32px -6px rgb(185 155 107 / 0.4);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+/* The resting reflection: a soft light pooled in the upper third. */
+.btn-luxe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(120% 90% at 22% -18%, rgb(255 250 236 / 0.5), transparent 55%);
+  opacity: 0.7;
+  transition: opacity 0.45s ease;
+}
+/* The travelling sheen: one slow pass every ~10s, then stillness. */
+.btn-luxe::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgb(255 252 244 / 0.26) 50%, transparent);
+  animation: sheen 10s ease-in-out 2s infinite;
+}
+.btn-luxe:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgb(247 233 197 / 0.95),
+    inset 0 -1px 0 rgb(115 93 55 / 0.45),
+    0 2px 4px rgb(1 12 8 / 0.25),
+    0 12px 28px rgb(1 12 8 / 0.28),
+    0 18px 48px -8px rgb(185 155 107 / 0.5);
+}
+.btn-luxe:hover::before {
+  opacity: 1;
+}
+.btn-luxe:active {
+  transform: translateY(0) scale(0.98);
+  filter: brightness(0.98);
+  box-shadow:
+    inset 0 1px 0 rgb(247 233 197 / 0.7),
+    inset 0 -1px 0 rgb(115 93 55 / 0.5),
+    0 1px 2px rgb(1 12 8 / 0.25),
+    0 4px 10px rgb(1 12 8 / 0.2),
+    0 6px 20px -6px rgb(185 155 107 / 0.3);
+}
+.btn-luxe:focus-visible {
+  outline: 1px solid var(--color-gold-300);
+  outline-offset: 3px;
+  box-shadow:
+    inset 0 1px 0 rgb(247 233 197 / 0.85),
+    0 0 0 5px rgb(200 164 106 / 0.22),
+    0 6px 16px rgb(1 12 8 / 0.22);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-luxe,
+  .btn-luxe::after {
+    animation: none;
+    transition-duration: 0.01ms;
+  }
+  .btn-luxe:hover {
+    transform: none;
+  }
+}
+
+/* Precision-machined badge: a hairline metal wash under the existing gold
+   border, plus one slow sheen pass every ~13s. Scoped to badges that opt in
+   (e.g. Demo Hero) rather than baked into the shared gold tone, so ordinary
+   gold badges elsewhere stay plain. */
+@utility badge-luxe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgb(247 233 197 / 0.12), transparent 60%),
+    linear-gradient(165deg, rgb(238 215 165 / 0.1) 0%, rgb(153 127 83 / 0.06) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(247 233 197 / 0.18),
+    inset 0 -1px 0 rgb(115 93 55 / 0.25),
+    0 1px 2px rgb(1 12 8 / 0.2),
+    0 4px 14px -4px rgb(185 155 107 / 0.25);
+}
+.badge-luxe::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 55%;
+  background: linear-gradient(105deg, transparent, rgb(255 252 244 / 0.22) 50%, transparent);
+  animation: sheen 13s ease-in-out 3s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge-luxe::after {
+    animation: none;
+  }
+}
+
+/* ── Wordmark material ─────────────────────────────────────────────────── */
+
+/* Liquid champagne: a band of light drifts across the metal, pauses, returns.
+   Animating background-position on a text-sized element is cheap; the element
+   never reflows. */
+@keyframes gold-flow {
+  0% {
+    background-position:
+      115% 0,
+      0 0;
+  }
+  55% {
+    background-position:
+      -35% 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      -35% 0,
+      0 0;
+  }
+}
+
+/* Brushed champagne gold, clipped to the letterforms. Two layers:
+   1. the travelling reflection (animated background-position)
+   2. the static metal ramp highlight along the cap line, shadow at the
+      baseline, the way light falls on a machined edge.
+   The stops live in variables so light mode can deepen the alloy for
+   contrast without touching the material itself. */
+.wordmark-metal {
+  --wm-hi: rgb(247 233 197 / 0.9);
+  --wm-a: #f7e9c5;
+  --wm-b: #eed7a5;
+  --wm-c: #d4b06a;
+  --wm-d: #b99b6b;
+  --wm-e: #9a7f53;
+  background-image:
+    linear-gradient(
+      115deg,
+      transparent 38%,
+      var(--wm-hi) 49%,
+      rgb(255 252 244 / 0.95) 50%,
+      var(--wm-hi) 51%,
+      transparent 62%
+    ),
+    linear-gradient(178deg, var(--wm-a) 0%, var(--wm-b) 24%, var(--wm-c) 52%, var(--wm-d) 76%, var(--wm-e) 100%);
+  background-size:
+    280% 100%,
+    100% 100%;
+  background-position:
+    115% 0,
+    0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Physical depth: a hairline shadow under each glyph and the faintest
+     warm bloom both follow the letterform alpha, not the box. */
+  filter: drop-shadow(0 1px 0 rgb(115 93 55 / 0.35)) drop-shadow(0 0 14px rgb(212 176 106 / 0.18));
+  animation: gold-flow 14s ease-in-out 3s infinite;
+}
+.light .wordmark-metal {
+  /* Deeper alloy on ivory: same metal, less light in the room. */
+  --wm-hi: rgb(247 233 197 / 0.55);
+  --wm-a: #c8a46a;
+  --wm-b: #b99b6b;
+  --wm-c: #9a7f53;
+  --wm-d: #8a6e3f;
+  --wm-e: #735d37;
+  filter: drop-shadow(0 1px 0 rgb(115 93 55 / 0.2)) drop-shadow(0 0 12px rgb(200 164 106 / 0.14));
+}
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-metal {
+    animation: none;
+  }
+}
+
+/* The light behind the wordmark. Two layers a champagne key light and a
+   wider sage counter-atmosphere kept in CSS so light mode can pull them
+   back (a glow that reads as atmosphere on forest reads as a smudge on
+   ivory). Motion animates only transform/opacity on these. */
+.wordmark-halo-gold {
+  background: radial-gradient(
+    48% 46% at 50% 52%,
+    rgb(247 233 197 / 0.13),
+    rgb(212 176 106 / 0.07) 42%,
+    transparent 72%
+  );
+}
+.wordmark-halo-sage {
+  background: radial-gradient(70% 62% at 50% 46%, rgb(137 168 156 / 0.05), transparent 70%);
+}
+.light .wordmark-halo-gold {
+  background: radial-gradient(48% 46% at 50% 52%, rgb(200 164 106 / 0.07), transparent 68%);
+}
+.light .wordmark-halo-sage {
+  background: radial-gradient(70% 62% at 50% 46%, rgb(137 168 156 / 0.03), transparent 70%);
+}
+
+/* A slow ambient bloom used behind success/emphasis moments the light
+   itself seems to breathe. Transform + opacity only. */
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+.glow-breathe {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-breathe {
+    animation: none;
+  }
+}
+
+/* ── Reward system ─────────────────────────────────────────────────────── */
+
+/* Press pulse: a soft radial bloom from the press point. Spawned by Button,
+   removed on animationend. Transform + opacity only. */
+@keyframes press-pulse {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+.press-pulse {
+  position: absolute;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%) scale(0);
+  animation: press-pulse 0.65s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards;
+  will-change: transform, opacity;
+}
+.press-pulse-gold {
+  background: radial-gradient(circle, rgb(247 233 197 / 0.85) 0%, rgb(212 176 106 / 0.35) 35%, transparent 70%);
+}
+.press-pulse-sage {
+  background: radial-gradient(circle, rgb(137 168 156 / 0.5) 0%, rgb(137 168 156 / 0.18) 40%, transparent 70%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .press-pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Confirmation check: drawn in a single stroke when a Button enters its
+   success state (e.g. Send → ✓ Sent). */
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.btn-check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: check-draw 0.4s cubic-bezier(0.21, 0.47, 0.32, 0.98) 0.05s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-check path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Editorial link underline: draws in from the left on hover. */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Hairline gold rule the signature editorial divider. */
+@utility rule-gold {
+  position: relative;
+}
+.rule-gold::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold-400), transparent);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Demo journey ──────────────────────────────────────────────────────── */
+
+/* Scroll reveal: content arrives once, the first time it enters view.
+   Under reduced motion the media query never matches, so elements simply
+   render in their final state — no opacity:0 flash, no JS branch needed. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A slow vertical breath objects that feel physical, tethered by gravity
+   rather than pinned to the page. Two speeds so paired objects don't sync. */
+@keyframes drift-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes drift-y-wide {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1.5deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .drift {
+    animation: drift-y 9s ease-in-out infinite;
+  }
+  .drift-wide {
+    animation: drift-y-wide 13s ease-in-out infinite;
+  }
+}
+
+/* The scroll spine: a hairline gold thread running the length of the
+   journey, with a dot positioned by scroll progress (set as a CSS var by
+   ScrollSpine, transform-only so it never triggers layout). */
+.spine-line {
+  background: linear-gradient(180deg, transparent, var(--color-gold-400) 8%, var(--color-gold-400) 92%, transparent);
+  opacity: 0.28;
+}
+.spine-dot {
+  top: 0;
+  transform: translateY(calc(var(--spine-progress, 0) * 1px));
+  box-shadow:
+    0 0 0 4px rgb(200 164 106 / 0.14),
+    0 0 16px rgb(200 164 106 / 0.5);
+}
+
+/* Slow rotation for helix / orbit geometry a full turn every 40s. */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .spin-slow {
+    animation: spin-slow 44s linear infinite;
+  }
+  .spin-slow-rev {
+    animation: spin-slow 60s linear infinite reverse;
+  }
+}
+
+/* A biomarker line drawing itself in, then holding still. */
+@keyframes draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .draw-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: draw-path 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* Custom cursor for /demo: native cursor stays put everywhere until JS
+   confirms fine pointer + motion allowed, so nobody loses their cursor. */
+.demo-cursor-active {
+  cursor: none;
+}
+.demo-cursor-active a,
+.demo-cursor-active button {
+  cursor: none;
+}
+.demo-cursor {
+  will-change: transform;
+}
+.demo-cursor-ring {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid rgb(200 164 106 / 0.6);
+  box-shadow: 0 0 18px 2px rgb(200 164 106 / 0.35);
+  transition:
+    width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease;
+}
+.demo-cursor.is-magnetic .demo-cursor-ring {
+  height: 2.75rem;
+  width: 2.75rem;
+  background: rgb(200 164 106 / 0.08);
+  border-color: rgb(200 164 106 / 0.9);
+}
+/* A much larger, very soft halo trailing behind the ring a spotlight
+   the cursor casts rather than a second visible shape. */
+.demo-cursor-halo {
+  height: 14rem;
+  width: 14rem;
+  background: radial-gradient(circle, rgb(200 164 106 / 0.06), transparent 70%);
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+.demo-cursor.is-magnetic .demo-cursor-halo {
+  opacity: 0.85;
+}
+
+/* Pointer-tracked tilt for the /demo portal cards, driven by --tilt-x/--tilt-y
+   custom properties set via JS on pointermove (no extra animation library). */
+@media (prefers-reduced-motion: no-preference) {
+  .tilt-card {
+    transform: perspective(800px) rotateX(calc(var(--tilt-y, 0) * -6deg)) rotateY(calc(var(--tilt-x, 0) * 6deg));
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@media print {
+  .print-hidden {
+    display: none !important;
   }
 }
