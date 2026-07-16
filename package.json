@@ -59,7 +59,7 @@
     "ical-generator": "^11.0.0",
     "jose": "^6.2.3",
     "next": "16.2.9",
-    "next-auth": "5.0.0-beta.31",
+    "next-auth": "4.24.14",
     "posthog-js": "^1.396.5",
     "prisma": "^7.8.0",
     "qrcode": "^1.5.4",
@@ -86,7 +86,7 @@
     "@types/three": "^0.185.0",
     "@vitejs/plugin-react": "^5.2.0",
     "@vitest/ui": "^4.1.9",
-    
+
     "dotenv": "^17.4.2",
     "eslint": "^10.6.0",
     "eslint-config-next": "16.2.9",
@@ -102,7 +102,7 @@
     "tailwindcss": "^4.3.2",
     "tsx": "^4.22.4",
     "typed-query-selector": "^2.12.1",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.62.1",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.9"
