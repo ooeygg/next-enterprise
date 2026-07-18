@@ -21,9 +21,6 @@
     "analyze": "ANALYZE=true pnpm run build",
     "test": "FORCE_COLOR=1 vitest run",
     "typecheck": "tsc --noEmit",
-    "fhir:backfill": "tsx scripts/fhir-backfill.ts",
-    "medplum:test": "tsx scripts/medplum-smoke-test.ts",
-    "medplum:mcp:token": "tsx scripts/medplum-mcp-prod-token.ts",
     "smoke:production": "PRODUCTION_SMOKE=true playwright test --project=chromium e2e/production-smoke.spec.ts",
     "smoke:cleanup": "tsx scripts/production-smoke-cleanup.ts",
     "bootstrap:admin": "tsx scripts/bootstrap-admin.ts",
@@ -41,7 +38,6 @@
     "coupling-graph": "npx madge --extensions js,jsx,ts,tsx,css,md,mdx ./ --exclude '.next|tailwind.config.js|reset.d.ts|prettier.config.js|postcss.config.js|playwright.config.ts|next.config.js|next-env.d.ts|instrumentation.ts|e2e/|README.md|.storybook/|.eslintrc.js' --image graph.svg"
   },
   "dependencies": {
-    "@medplum/core": "^5.1.23",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -71,7 +67,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-"@medplum/fhirtypes": "^5.1.23",
     "@next/bundle-analyzer": "^16.2.9",
     "@next/eslint-plugin-next": "16.2.9",
     "@playwright/test": "^1.58.2",
